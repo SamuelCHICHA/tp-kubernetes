@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-samuel
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: samuel-chicha.amnay.fr
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: cluster-ip-samuel
+              port:
+                number: 80
